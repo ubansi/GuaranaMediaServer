@@ -4,7 +4,7 @@ const app: express.Express = express()
 //     res.send("こんにちは");
 // })
 app.use(express.static('public'));
-app.listen(8080,()=>{
-    console.log('ポート8080番で起動しました。')
+app.listen(3000,()=>{
+    console.log('ポート3000番で起動しました。')
 })
 
