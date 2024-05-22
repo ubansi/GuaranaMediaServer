@@ -19,6 +19,17 @@ npm run build
 npm start
 ```
 
+# docker up
+```shell
+docker-compose up -d
+```
+
+# migration
+
+```shell
+npx prisma migrate dev --name init
+```
+
 # Front end 
 [GuaranaMediaServer-front](https://github.com/ubansi/GuaranaMediaServer-front)リポジトリのdist配下をまるごとpublicへコピーする
 
