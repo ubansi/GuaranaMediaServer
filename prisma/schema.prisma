@@ -17,13 +17,60 @@ datasource db {
 model Manga {
   id  Int @id @default(autoincrement())
   title String
-  artist_id Int
-  group_id Int
-  parodies_id Int
-  file_location String
-  tumbnail_location String
-  category_id Int
+  artist Artist @relation(fields: [artistId], references: [id])
+  artistId Int
+  group Group? @relation(fields: [groupId], references: [id])
+  groupId Int?
+  parody Parody? @relation(fields: [parodyId], references: [id])
+  parodyId Int?
+  fileLocation String
+  tumbnailLocation String
+  category Category @relation(fields: [categoryId], references: [id])
+  categoryId Int
   source String?
   remarks String?
   filename String
+  maxPage Int
+  bookmark Int
+  tags Tag[]
+  favorites Favorite[]
+}
+
+model Tag {
+  id Int @id @default(autoincrement())
+  name String
+  manga Manga @relation(fields: [mangaId],references: [id])
+  mangaId Int
+}
+
+model Category {
+  id Int @id @default(autoincrement())
+  name String
+  manga Manga[]
+}
+
+model Artist {
+  id Int @id @default(autoincrement())
+  name String
+  manga Manga[]
+}
+
+model Group {
+  id Int @id @default(autoincrement())
+  name String
+  manga Manga[]
+}
+
+model Parody {
+  id Int @id @default(autoincrement())
+  name String
+  manga Manga[]
+}
+
+model Favorite {
+  id Int @id @default(autoincrement())
+  name String
+  manga Manga @relation(fields: [mangaId],references: [id])
+  mangaId Int
+  page Int
 }
